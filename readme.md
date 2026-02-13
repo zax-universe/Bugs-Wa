@@ -130,8 +130,8 @@ Bugs-Wa/
 ### Prerequisites
 
 ```bash
-✓ Node.js v14.0 or higher
-✓ npm v6.0 or higher
+✓ Node.js v20.0 or higher
+✓ npm v11.0 or higher
 ✓ WhatsApp (aktif di device)
 ✓ Git
 ```
@@ -166,44 +166,20 @@ code .env
 **5️⃣ Jalankan Bot**
 ```bash
 npm start
+
+lalu masukan nomor yang akan di jadikan bot
+dan akan muncul kode pairing ( AAAAAAAA )
 ```
 
-**6️⃣ Scan QR Code**
+**Masukan pairing Code**
 - Buka WhatsApp di phone Anda
-- Scan QR code yang muncul di terminal
-- Tunggu sampai "Bot Ready!" muncul
+- Masukan kode pairing di preangkat tertaut
+- Tunggu 2-5 menit samapi console terminal berubah 
 
-> ⚠️ **Important**: Jangan close terminal saat bot berjalan!
 
 ---
 
 ## ⚙️ Konfigurasi
-
-### File `.env`
-
-```env
-# Bot Settings
-BOT_NAME=Bugs-Wa
-PREFIX=!
-OWNER_NUMBER=62812345678
-OWNER_NAME=Admin
-
-# WhatsApp Settings
-SESSION_NAME=bugs-wa-session
-AUTO_RECONNECT=true
-RECONNECT_DELAY=5000
-
-# Features
-ENABLE_LOGGING=true
-DEBUG_MODE=false
-ALLOW_COMMANDS=true
-
-# Security
-REQUIRE_AUTH=true
-ADMIN_ONLY_COMMANDS=false
-MAX_COMMAND_LIMIT=10
-```
-
 ### File `setting/config.js`
 
 ```javascript
@@ -258,22 +234,8 @@ npm run debug
 [PREFIX][COMMAND] [ARGUMENTS]
 
 Contoh:
-!help                    → Menampilkan semua command
-!ping                    → Cek status bot
-!info                    → Informasi bot
-!hello                   → Simple greeting
+!.menu                  → Menampilkan semua command
 ```
-
-### Daftar Command Bawaan
-
-| Command | Syntax | Deskripsi |
-|:---:|:---|---|
-| `help` | `!help [command]` | Menampilkan bantuan command |
-| `ping` | `!ping` | Cek kecepatan response bot |
-| `info` | `!info` | Info bot dan owner |
-| `menu` | `!menu` | Tampilkan menu utama |
-| `owner` | `!owner` | Info pemilik bot |
-
 ---
 
 ## 📚 Dokumentasi Lengkap
